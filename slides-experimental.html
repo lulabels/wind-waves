@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experimental Data</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="mathjax-config.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" defer></script>
+</head>
+<body>
+  <main class="container experimental-page justified-page">
+    <header class="page-header">
+      <a href="index.html" class="back-link">← Back to main page</a>
+      <h1>Experimental Data</h1>
+      <p class="page-subtitle">
+        Comparing laboratory wave–tank experiments with the modified growth rate
+      </p>
+    </header>
+
+    <section class="ep-section">
+      <div class="ep-card">
+
+        <!-- Intro text -->
+         <p><em> Note: This comparison does not appear in the preprint and is not in its final form as it was made in response to reviewer comments and the manuscript is still under revision. </em> </p>
+        <p>
+          Comparing to experimental data reveals that the observed suppression of
+          wave growth with increasing wave steepness closely corresponds to the
+          predicted growth rates from our mathematical analysis. Wave–tank
+          experiments report a reduction in growth as the waves become steeper;
+          our modified Miles growth rate captures this behavior naturally through
+          the $\epsilon^2$ correction term.
+        </p>
+        <p>
+          To make the comparison shown below, it was necessary to extend Miles’ growth-rate approximation
+          in the case of a realistic logarithmic
+          background profile, which is neither analytically nor numerically
+          tractable , unlike the double–exponential profile. Using the
+          calculated growth-rate modification, we construct a corrected growth
+          curve given a background logarithmic wind profile and compare it to the growth
+          rates inferred from the compilation of laboratory studies in
+          Peirson &amp; Garcia (2008).
+        </p>
+
+        <!-- Figure block -->
+        <figure class="graphical-abstract">
+          <img src="img/beta_vs_eps_overlay.png"
+               alt="Comparison of modified growth rates with experimental data from wave-tank studies" />
+          <figcaption>
+            <em>Figure.</em> Comparison between the modified Miles growth rate for a
+            logarithmic wind profile and experimental growth rates compiled
+            from wave–tank studies (Peirson &amp; Garcia, 2008).
+          </figcaption>
+        </figure>
+
+        <div class="experimental-notes">
+          <p>
+            The solid black line is the original Miles growth rate for a logarithmic wind profile, which does not depend on wave steepness.
+          </p>
+          <p>
+            The dashed line represents the modified growth rates we calculated including the $\epsilon^2$ correction.
+            Here, a long wave frequency of $f = 3$ Hz was assumed as that was an intermediate frequency among those used in the experiments.
+            The aerodynamic roughness length was set to $y_0 = 0.001$ m and the friction velocity $u_*$ was set to $0.33$ m/s, which were values within the typical range of the experiments.
+            One could likely get a better fit to the data by adjusting the choice of these parameters on the basis of individual experiments, 
+            rather than just picking constant values within the ranges used in the experiments, but the purpose here is to demonstrate that the trend of decreasing growth with increasing steepness is captured by our modification.
+            The von Kármán constant $\kappa$ was taken as $0.4$.
+          </p>
+          <p>
+            The dash-dotted, dotted, and dashed lines are from Peirson &amp; Garcia (2008) and represent the possible theoretical predictions for the data given therein.
+            Note that this explanation is partially empirically fitted in that the Belcher line was fitted using a combination of Belcher (1999)'s formula for the energy input to the wave field by wind and 
+            "attributing 37.5 % of the Plant growth rate to the wave coherent tangential stress (to best represent
+            the overall data trend at higher steepnesses)."
+
+
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <a href="index.html" class="back-link">← Back to main page</a>
+    </footer>
+  </main>
+</body>
+</html>

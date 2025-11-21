@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Other Processes</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="mathjax-config.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" defer></script>
+</head>
+<body>
+  <main class="container other-page justified-page">
+    <header class="page-header">
+      <a href="index.html" class="back-link">← Back to main page</a>
+      <h1>Other Processes</h1>
+      <p class="page-subtitle">
+        Other air-sea processes, such as those dependent on relative wind
+      </p>
+    </header>
+
+    <section class="ep-section">
+      <div class="ep-card">
+        <figure class="graphical-abstract eddy-figure">
+          <div class="image-crop image-crop-bottom-half">
+            <img src="img/ocean-eddy.jpg"
+                 alt="Satellite image of a mesoscale ocean eddy" />
+          </div>
+          <figcaption>
+            Satellite image of a mesoscale ocean eddy in the Canary region.
+            Image:
+            <a href="https://en.wikipedia.org/wiki/Eddy_(fluid_dynamics)#/media/File:Canary_A2002186_1155_250m.jpg"
+               target="_blank" rel="noopener noreferrer">
+              Canary_A2002186_1155_250m.jpg
+            </a>,
+            via Wikimedia Commons (NASA / public domain).
+          </figcaption>
+        </figure>
+
+        <p>
+          Many air–sea processes and quantities are written in terms of a
+          <em>relative wind</em>—the difference between the wind velocity and some representation of the surface
+          current. In our framework the relevant surface current is the
+          <strong>Lagrangian</strong> mean flow \(\overline{\mathbf{u}}^L\); Stokes drift
+          would importantly modify the effective relative wind. In particular, the following merit further investigation (some of which is already being undertaken):
+        </p>
+
+        <ul>
+          <li>
+            <strong>Wind–stress parameterizations.</strong>
+            Bulk formulas often take the stress to depend on the difference between
+            \(\overline{\mathbf{u}}_E\), the Eulerian mean velocity, in the air and the ocean. If the
+            atmosphere  instead “feels” \(\overline{\mathbf{u}}^L\), then the
+            wave-induced component \(u_S\) changes the relative wind and, with it,
+            the surface momentum flux.
+          </li>
+          <li>
+            <strong>Processes based on relative wind, such as eddy killing.</strong>
+            Mechanisms where the wind extracts energy from mesoscale eddies or
+            other currents depend on both the sign and magnitude of the relative
+            wind. A wave-induced contribution to \(\overline{\mathbf{u}}^L\) alters that
+            relative wind and can therefore modify the strength and pattern of
+            these feedbacks.
+          </li>
+          <li>
+            <strong>Spatial variability in observations.</strong>
+            Observed spatial variability in the wave field implies a spatially
+            varying Stokes drift and thus a spatially varying Lagrangian mean and
+            relative wind. Doppler-based surface–current measurements already
+            capture this variability, providing a pathway to incorporate the
+            wave-induced feedback into wind–stress parameterizations.
+          </li>
+        </ul>
+
+        <p>
+          In this sense, the same Lagrangian drift that significantly modifies Miles’ instability
+          could also significantly modify any process that depends on relative wind, from idealized growth
+          rates to the large-scale air–sea energy exchanges associated with eddies
+          and other currents.
+        </p>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <a href="index.html" class="back-link">← Back to main page</a>
+    </footer>
+  </main>
+</body>
+</html>

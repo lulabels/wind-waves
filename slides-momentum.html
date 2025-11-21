@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Momentum Budget</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="mathjax-config.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" defer></script>
+</head>
+<body>
+  <main class="container momentum-page justified-page">
+    <header class="page-header">
+      <a href="index.html" class="back-link">← Back to main page</a>
+      <h1>Momentum Budget</h1>
+      <p class="page-subtitle">
+        An integral momentum budget shows it lowers the efficiency of momentum transfer, thereby suppressing further wave growth. The calculated modified growth rates reflect this suppression. 
+      </p>
+    </header>
+
+    <!-- Section 1: Interactive momentum budget -->
+    <section class="ep-section">
+      <div class="ep-card">
+        <h2>Integral momentum budget between surface and critical layer</h2>
+        <p>
+          To interpret the growth rate modification, we formulate a momentum budget in the
+          full Lagrangian coordinates. It emphasizes that the critical-layer interaction is
+          controlled by the coupling between the <strong>total phase speed</strong> \(c\) and the
+          <strong>total Lagrangian mean flow</strong> \(U\), not just the background/mean Eulerian velocity.
+        </p>
+
+        <div class="equation-block momentum-equation">
+          <span class="mom-term"
+                data-description="Rate of change of horizontal momentum density in the layer between the free surface and the critical level. ">
+            \( \frac{\partial}{\partial t}
+              \displaystyle\int_{0}^{b_c} \mathcal{J} \,\dot{x}\,\mathrm{d}b \)
+          </span>
+          \( + \)
+          <span class="mom-term"
+                data-description="Horizontal flux of momentum within the layer; redistributes momentum laterally.">
+            \( \frac{\partial}{\partial a}
+              \displaystyle\int_{0}^{b_c} p\,z_b\,\mathrm{d}b \)
+          </span>
+          \( = \)
+          <span class="mom-term"
+                data-description="Hydrostatic contribution to the form drag, proportional to the wave amplitude via z(b) but modulateed by the key phase shift between wave motion and the pressure field.">
+            \( \rho_0 g z\,\dot{z}
+               \Big|_{b=0}^{b=b_c} \)
+          </span>
+          \( -
+          \)
+          <span class="mom-term"
+                data-description="Non-hydrostatic contribution written as a vertical flux of kinetic energy; it represents work done by the fluctuating pressure at the surface and at the critical level.">
+            \( \frac{1}{2}\rho_0
+               \big(\dot{x}^2+\dot{z}^2\big)\dot{z}
+               \Big|_{b=0}^{b=b_c} \)
+          </span>
+          \( +
+          \)
+          <span class="mom-term"
+                data-description="Contribution from the integration constant f(b,t).">
+            \( \rho_0 f(b,t)\Big|_{b=0}^{b=b_c} \)
+          </span>
+        </div>
+        <div id="mom-term-description" class="mom-term-description">
+          Hover or tap a term in the equation to see its role in the momentum budget.
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Section 3: Connection to growth-rate suppression -->
+    <section class="ep-section">
+      <div class="ep-card">
+        <h2>How the budget explains growth-rate suppression</h2>
+        <p>
+          The pressure representation makes the dependence on the <em>total</em>
+          Lagrangian mean velocity (the Lagrangian drift) explicit:
+        </p>
+        <div class="equation-block">
+          \[
+          p = \rho_0\left[
+            -g z
+            + \frac{1}{2}\,\underbrace{(c-U)}_{\text{total relative speed}}
+              \big(\dot{x}^2+\dot{z}^2\big)
+            + f(b,t)
+          \right].
+          \]
+        </div>
+        <p>
+          The momentum budget therefore links the form drag directly to the
+          <strong>coupling between the total phase speed \(c\) and the total
+          Lagrangian mean flow \(U\)</strong> throughout the layer between the interface and the critical level,
+          where we now have the understanding that the critical level is only necessarily "critical" with respect to the leading-order terms, 
+          $c^{(0)}=U^{(0)}$.
+        </p>
+
+        <div class="momentum-grid">
+          <div>
+            <ul>
+              <li>
+                At leading-order, we have the condition \(c^{(0)}(b_c) = U^{(0)}(b_c)\) (written here in Lagrangian coordinates), which makes the momentum transfer
+                from air to sea maximally efficient.
+              </li>
+              <li>
+                As the wave-induced mean flow \(U^{(2)}\) grows with steepness,
+                the total phase speed and total Lagrangian mean flow no longer match:
+                <strong>in general \(c \neq U\)</strong>.
+              </li>
+              <li>
+                This mismatch <strong>detunes the resonance at the critical level</strong>,
+                reducing the efficiency of momentum transfer and the net form drag in
+                the momentum budget.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <div class="key-message">
+              The momentum budget and the growth-rate calculation give a consistent
+              picture: the wave-induced mean flow modifies the coupling between
+              phase speed and Lagrangian mean flow at the critical level, so that
+              increasing steepness leads to a suppression of wave growth.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <a href="index.html" class="back-link">← Back to main page</a>
+    </footer>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const terms = Array.from(document.querySelectorAll('.mom-term'));
+      const descBox = document.getElementById('mom-term-description');
+      if (!terms.length || !descBox) return;
+
+      function activate(term) {
+        terms.forEach(t => t.classList.remove('active'));
+        term.classList.add('active');
+        const text = term.getAttribute('data-description') || '';
+        descBox.innerHTML = text;
+      }
+
+      terms.forEach(term => {
+        term.addEventListener('mouseenter', () => activate(term));
+        term.addEventListener('click', () => activate(term));
+      });
+
+      // Initialize with the first term active
+      activate(terms[0]);
+    });
+  </script>
+</body>
+</html>

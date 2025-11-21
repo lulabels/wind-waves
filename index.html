@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Role of Lagrangian Drift</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap" rel="stylesheet">
+  <script src="mathjax-config.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" defer></script>
+</head>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const terms   = Array.from(document.querySelectorAll('.mom-term'));
+    const descBox = document.getElementById('mom-term-description');
+    if (!terms.length || !descBox) return;
+
+    function activate(term) {
+      terms.forEach(t => t.classList.remove('active'));
+      term.classList.add('active');
+      descBox.innerHTML = term.getAttribute('data-description') || '';
+    }
+
+    terms.forEach(term => {
+      term.addEventListener('mouseenter', () => activate(term));
+      term.addEventListener('click',      () => activate(term));
+    });
+
+    // initialize with the first term highlighted
+    activate(terms[0]);
+  });
+</script>
+
+
+<body>
+  <main class="container">
+    <h1>The Role of Lagrangian Drift in the Generation of Surface Waves by Wind</h1>
+
+    <section class="author-bar">
+      <div class="author-group">
+        <p class="label">Authors</p>
+        <p class="content"><strong>Lulabel Ruiz Seitz</strong><sup>1</sup>, Mara A. Freilich<sup>1, 2</sup>, Nick Pizzo<sup>3</sup></p>
+      </div>
+      <div class="author-group">
+        <p class="label">Institutions</p>
+        <p class="content">
+          <span><sup>1</sup> Division of Applied Mathematics, Brown University</span><br>
+          <span><sup>2</sup> Department of Earth, Environmental, and Planetary Science, Brown University</span><br>
+          <span><sup>3</sup> Graduate School of Oceanography, University of Rhode Island</span>
+        </p>
+      </div>
+    </section>
+
+    <section class="hero-figure">
+      <figure>
+        <img src="img/title_slide.png" />
+      <p> In other words, if there is a pre-existing wave, does that affect the rate of air-sea momentum transfer?</p>
+      <p> Does the initial perturbation that eventually becomes a wave affect its own further response to the wind?</p>
+      <p> We answer the key question of whether the wind see the waves in this sense through a nonlinear stability analysis entirely in the Lagrangian frame.</p></figcaption>
+      </figure>
+    </section>
+
+    <section class="topics">
+      <h2>Background</h2>
+      <div class="tiles tiles-showcase">
+        <div class="tile-showcase-card">
+          <figure class="tile-showcase tile-showcase--miles">
+            <img src="img/miles-header2.png" alt="Miles theory stability diagram">
+          </figure>
+
+          <a class="tile-showcase-button" href="slides-milestheory.html">
+            Miles Theory
+          </a>
+
+          <p class="tile-description">
+            Miles' (1957) original theory for wind-wave generation 
+            finds that an instability corresponding to wave growth arises when the 
+            phase speed of an initial sinusoidal disturbance matches the background wind velocity at some height.
+          </p>
+        </div>
+        <div class="tile-showcase-card">
+          <figure class="tile-showcase tile-showcase--lighthill">
+              <img src="img/lighthill-header2.png" alt="Lighthill argument streamline sketch">
+          </figure>
+
+          <a class="tile-showcase-button" href="slides-lighthill.html">
+            Lighthill Argument
+          </a>
+
+          <p class="tile-description">
+            The physical interpretation behind the mechanism proposed by Miles was given by Lighthill (1962),
+            mainly through a parcel argument. It thus involves the (mean) velocity a parcel actually experiences,
+            the Lagrangian drift.
+          </p>
+        </div>
+      </div>
+
+      <h2>Overview of Our Work</h2>
+      <div class="overview-block">
+        <div class="overview-summary">
+          <figure class="graphical-abstract">
+            <img src="LagrangianDriftGraphicalAbstract.jpg" alt="Graphical abstract showing Lagrangian drift concepts" />
+          </figure>
+          <div class="overview-text">
+            <p>A parcel argument given by Lighthill (1962) is the basis of the <em>physical</em> understanding of the mathematical framework established by Miles (1957); this suggests the <em>actual</em> velocity experienced by a parcel is central to wind-driven wave generation.</p>
+            <p>Yet, the mean particle (Lagrangian) velocity and the mean Eulerian velocity used in the math differ by the Stokes drift:</p>
+            <div class="equation-block">
+              <span class="equation">\( \overline{\mathbf{u}}_L = \overline{\mathbf{u}}_E + \mathbf{u}_S. \)</span>
+            </div>
+            <p>This drift scales with the square of wave slope (or amplitude). Thus, Lighthill’s picture aligns with Miles’ math at leading order, but the correspondence breaks down at higher orders.</p>
+          </div>
+          <p class="overview-conclusion">To address this, we re-derive Miles’ analysis <strong>fully in the Lagrangian frame</strong>, through <strong>third order in the wave slope</strong>.</p>
+        </div>
+      </div>
+
+      <h2>Methods</h2>
+      <div class="tiles tiles-methods">
+        <a class="tile tile-method-main tile-shift-up tile-zoom-tight tile-pan-up tile-pan-up-single" href="slides-method-single.html" style="background-image: url('img/themath_single.png')">
+          <span class="tile-label">The Math (Single)</span>
+        </a>
+        <a class="tile tile-method-secondary" href="slides-method-ep.html" style="background-image: url('img/themath_ep.png')">
+          <span class="tile-label">The Math (EP)</span>
+        </a>
+        <a class="tile tile-method-secondary tile-shift-up tile-zoom-tight tile-zoom-plus tile-pan-up" href="https://arxiv.org/pdf/2508.02580" target="_blank" rel="noopener" style="background-image: url('img/themath_lp.png')">
+          <span class="tile-label">The Math (LP)</span>
+        </a>
+      </div>
+
+      <h2>Results</h2>
+      <div class="results-stacked">
+        <div class="result-row">
+          <div class="result-media">
+            <figure class="tile tile-result tile-result-large result-figure">
+              <img src="img/growth-rates.png" alt="Modified growth rate figure">
+            </figure>
+          </div>
+          <div class="result-content">
+            <div class="result-heading-card">
+              <p class="result-heading">1. The wave-induced mean flow significantly modifies wave growth rates.</p>
+            </div>
+            <div class="result-text">
+              <p>The leading-order correction due to the presence of the wave-induced mean flow significantly suppresses growth at high wavenumbers in all cases, 
+                but also at intermediate wavenumbers when the background shear and wave steepness are sufficiently large. </p>
+                <p> In the realistic double exponential background profiles tried, 
+                the integrated suppression could be nearly 40%.
+              </p>
+            </div>
+            <a class="result-button result-button-inline" href="slides-growth.html">Modified Growth Rates</a>
+          </div>
+        </div>
+        <div class="result-row result-row-reverse result-row-momentum">
+          <!-- LEFT: momentum description -->
+          <div class="result-content">
+            <div class="result-heading-card">
+              <p class="result-heading">
+                2. Momentum budget depends on the Lagrangian mean velocity.
+              </p>
+            </div>
+            <div class="result-text">
+              <p>
+                Specifically, the difference $c-U$ modulates the integrated momentum fluxes. 
+                Since $c=U$ at leading order but not necessarily higher orders, this supports that 
+                a detuning of the resonance due to the wave-induced flow may explain the suppression of wave growth.
+              </p>
+            </div>
+            <a class="result-button result-button-inline" href="slides-momentum.html">
+              Momentum Budget
+            </a>
+          </div>
+
+          <!-- RIGHT: interactive equation + description + pressure -->
+          <div class="result-media">
+            <div class="momentum-card">
+              <div class="equation-block momentum-equation">
+                <span class="mom-term"
+                      data-description="Rate of change of horizontal momentum in the layer between the free surface and the critical level.">
+                  \( \frac{\partial}{\partial t}
+                    \displaystyle\int_{0}^{b_c} \mathcal{J} \,\dot{x}\,\mathrm{d}b \)
+                </span>
+                \( + \)
+                <span class="mom-term"
+                      data-description="Horizontal flux of momentum within the layer; redistributes momentum laterally.">
+                  \( \frac{\partial}{\partial a}
+                    \displaystyle\int_{0}^{b_c} p\,z_b\,\mathrm{d}b \)
+                </span>
+                \( = \)
+                <span class="mom-term"
+                      data-description="Hydrostatic contribution to the form drag from pressure at the surface and at the critical level.">
+                  \( \rho_0 g z\,\dot{z}\Big|_{b=0}^{b=b_c} \)
+                </span>
+                \( -
+                \)
+                <span class="mom-term"
+                      data-description="Non-hydrostatic contribution via kinetic–energy flux at the surface and critical level.">
+                  \( \tfrac{1}{2}\rho_0
+                     \big(\dot{x}^2+\dot{z}^2\big)\dot{z}
+                     \Big|_{b=0}^{b=b_c} \)
+                </span>
+                \( +
+                \)
+                <span class="mom-term"
+                      data-description="Contribution from the integration constant \(f(b,t)\).">
+                  \( \rho_0 f(b,t)\Big|_{b=0}^{b=b_c} \)
+                </span>
+              </div>
+
+              <div id="mom-term-description" class="mom-term-description">
+                Hover or tap a term in the equation to see its role in the momentum budget.
+              </div>
+
+              <div class="equation-block momentum-pressure">
+                \( p = \rho_0\left[
+                  -g z
+                  + \tfrac{1}{2}\,\underbrace{(c-U)}_{\text{total relative speed}}
+                    \big(\dot{x}^2+\dot{z}^2\big)
+                  + f(b,t)
+                \right]. \)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-row">
+          <div class="result-media">
+            <figure class="tile tile-result tile-result-large result-figure">
+              <img src="img/beta_vs_eps_overlay.png" alt="Experimental data comparison">
+            </figure>
+          </div>
+          <div class="result-content">
+            <div class="result-heading-card">
+              <p class="result-heading">3. The predicted growth rates give a new explanation for experimental findings.</p>
+            </div>
+            <div class="result-text">
+              <p>A collection of growth rates from wave tank experiments compiled by Peirson & Garcia (2008) shows a decrease of growth with wave steepness.</p>
+              <p>When approximated for a logarithmic wind profile, our growth rates align well with those observed: providing a single, mathematical, non-empirical explanation.</p>
+            </div>
+            <a class="result-button result-button-inline" href="slides-experimental.html">Experimental Data</a>
+          </div>
+        </div>
+      </div>
+
+      <h2>Implications & Future Work</h2>
+      <div class="tiles tiles-three-col">
+        <a class="tile" href="slides-observational.html" style="background-image: url('img/HFradar.jpg')">
+          <span class="tile-label">Observational Data</span>
+        </a>
+        <a class="tile tile-shear" href="slides-shear.html" style="background-image: url('img/shear-thumbnail.png')">
+          <span class="tile-label">Shear Instabilities</span>
+        </a>
+        <a class="tile" href="slides-other.html" style="background-image: url('img/other-processes.jpg')">
+          <span class="tile-label">Other Processes</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="qr-section">
+      <p>arXiv preprint</p>
+      <div class="qr-placeholder">
+        <img class="qr-image" src="img/qrcode.png" alt="QR code to preprint" />
+      </div>
+    </section>
+
+    <section class="logo-row">
+      <div class="logo-grid">
+        <div class="logo-slot"><img src="img/brownlogo.png" alt="Brown University logo" /></div>
+        <div class="logo-slot"><img src="img/urilogo.png" alt="University of Rhode Island logo" /></div>
+        <div class="logo-slot"><img src="img/onrlogo.png" alt="ONR logo" /></div>
+        <div class="logo-slot"><img src="img/nasalogo.png" alt="NASA logo" /></div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Presented at the Divison of Fluid Dynamics · November 23, 2025</p>
+    </footer>
+
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      document.querySelectorAll('.tile').forEach(tile => {
+        observer.observe(tile);
+      });
+    </script>
+  </main>
+</body>
+</html>

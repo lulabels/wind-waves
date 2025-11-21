@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Single-Method Math Slides</title>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/white.css">
+  <style>
+    .slide-frame {
+      display: flex;
+      flex-direction: column;
+      width: min(95%, 1100px);
+      margin: 0 auto;
+      text-align: left;
+      box-sizing: border-box;
+    }
+
+    .slide-frame img {
+      width: 100%;
+      max-height: 600px;
+      object-fit: contain;
+    }
+
+    .slide-caption {
+      width: 100%;
+      max-width: 100%;
+      min-height: 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      margin-top: 0.6em;
+      align-self: stretch;
+      box-sizing: border-box;
+    }
+
+    .slide-caption p {
+      margin: 0;
+      font-size: 0.45em;
+      line-height: 1.35;
+      color: #333;
+    }
+
+    .slide-caption p + p {
+      margin-top: 0.35em;
+    }
+  </style>
+<script src="mathjax-config.js"></script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <section>
+        <div class="slide-frame">
+          <img src="math-single/math.001.png" alt="Single-method derivation slide 1" />
+          <div class="slide-caption">
+            <p>The first step of the math is to map the (Eulerian) Euler equations into the Lagrangian frame.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <img src="math-single/math.004.png" alt="Single-method derivation slide 4" />
+          <div class="slide-caption">
+            <p>The equations are very different; it is not <em>a priori</em> clear that we could even reproduce Miles' math in the Lagrangian frame, let alone consider higher orders.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <img src="math-single/math.005.png" alt="Single-method derivation slide 5" />
+          <div class="slide-caption">
+            <p>We expand the spatial coordinates of the particles, $x$ and $z$, in terms of monochromatic waves.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <img src="math-single/math.006.png" alt="Single-method derivation slide 6" />
+          <div class="slide-caption">
+            <p>Another change of variables is required just to obtain the Rayleigh equation.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <img src="math-single/math.008.png" alt="Single-method derivation slide 8" />
+          <div class="slide-caption">
+            <p>Asymptotic matching and discussion of the small imaginary part of the phase speed.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <img src="math-single/math.009.png" alt="Single-method derivation slide 9" />
+          <div class="slide-caption">
+            <p>This change of coordinates, due to Bennett, <em>Lagrangian Fluid Dynamics</em> (2010), is interesting because amplitude is rescaled by the difference between the background/mean velocity and the phase speed of the disturbance!</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <img src="math-single/math.010.png" alt="Single-method derivation slide 10" />
+          <div class="slide-caption">
+            <p>After this, using the boundary conditions at the interface, using conservation laws, more algebra, etc., one can actually recover Miles' growth rate (but in Lagrangian coordinates) as the leading-order solution!</p>
+            <p>To get the (more interesting) <em>modified</em> growth rate though, one must go to higher orders in the wave slope $\epsilon$.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <a href="index.html">⬅ Back to Homepage</a>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      width: 1200,
+      height: 800,
+      hash: true,
+      transition: 'fade',
+      backgroundTransition: 'fade'
+    });
+  </script>
+</body>
+</html>

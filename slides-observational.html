@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Observational Data</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="mathjax-config.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" defer></script>
+</head>
+<body>
+  <main class="container observational-page justified-page">
+    <header class="page-header">
+      <a href="index.html" class="back-link">← Back to main page</a>
+      <h1>Observational Data</h1>
+    </header>
+
+    <!-- Combined introduction: text + figure -->
+    <section class="ep-section">
+      <div class="ep-card observational-card">
+        <h2>Many remote sensing techniques actually measure the Lagrangian mean flow</h2>
+        <div class="observational-grid">
+          <div class="observational-text">
+            <p>
+              It was recently shown that remote sensing techniques that are based on observing current-induced shifts in wave dispersion
+              actually measure the Lagrangian, rather than Eulerian, mean current (Pizzo et al. 2023). Recall the Lagrangian mean velocity (written in terms of the usual Eulerian spatial coordinates) can be written as
+            </p>
+            <div class="equation-block">
+              \[
+              \overline{\mathbf{u}}_L = \overline{\mathbf{u}}_E + \mathbf{u}_S,
+              \]
+            </div>
+            <p>
+              where \(\overline{\mathbf{u}}_E\) is the Eulerian mean velocity and $\mathbf{u}_S$ is the Stokes drift. Doppler-based techniques such as HF radar, Doppler marine
+              radar, and along-track SAR, DoppVis, etc., which measure the phase speed of the waves, actually yield \(\overline{\mathbf{u}}_L\) rather than \(\overline{\mathbf{u}}_E\).
+              Now we know that \(\overline{\mathbf{u}}_L\) rather than \(\overline{\mathbf{u}}_E\) plays the key role in the generation of waves by wind. This role of the Lagrangian drift should be indicative of that in other related processes as well.
+              The <strong>nontrivial role of the Lagrangian drift should therefore be considered when using the data collected via these methods, or when considering whether to use these data versus truly Eulerian measurements.</strong></p>
+            </p>
+          </div>
+          <figure class="graphical-abstract observational-figure">
+            <img src="img/HFradar.jpg" alt="Coastal HF radar array measuring surface currents" />
+            <figcaption>
+              Coastal high-frequency (HF) radar arrays infer surface currents from the Doppler shift
+              of Bragg-resonant short waves, providing near–real-time maps of the upper-ocean flow.
+              <span class="photo-credit">
+                Photo credit: <a href="https://ioos.noaa.gov/project/hf-radar/">IOOS/NOAA</a>.
+              </span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Phase-speed result showing it is Lagrangian -->
+    <section class="ep-section">
+      <div class="ep-card">
+        <h2>Why it is the Lagrangian mean?</h2>
+        <p>
+          In Pizzo et al. (2023), the phase speed \(c\) is written as
+        </p>
+        <div class="equation-block">
+          \[
+          c =
+          \frac{
+            2 g y_0 - U\,\gamma
+            + 2 \displaystyle\int_{-\infty}^{0}
+              U\langle \Gamma J\rangle\,\mathrm{d}\beta
+          }{
+            U + \gamma
+          }\Bigg|_{b=0}          \]
+        </div>
+        <p>
+          where \(U\) is the Lagrangian drift. Importantly, the <strong>current-induced shift in
+          \(c\)</strong> obtained from this expression is controlled by the <em>Lagrangian</em>
+          mean flow: remote-sensing techniques that invert dispersion shifts are therefore
+          measuring the Lagrangian, not Eulerian, surface current.
+        </p>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <a href="index.html" class="back-link">← Back to main page</a>
+      <p class="page-citation">
+        Pizzo, Nick, et al. “The role of Lagrangian drift in the geometry, kinematics and dynamics of surface waves.”
+        <em>Journal of Fluid Mechanics</em> 954 (2023): R4.
+      </p>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Miles Theory Slides</title>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/white.css">
+  <style>
+    .slide-frame {
+      display: flex;
+      flex-direction: column;
+      width: min(95%, 1100px);
+      margin: 0 auto;
+      text-align: left;
+      box-sizing: border-box;
+    }
+
+    .slide-frame img {
+      width: 100%;
+      max-height: 600px;
+      object-fit: contain;
+    }
+
+    .slide-caption {
+      width: 100%;
+      max-width: 100%;
+      min-height: 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      margin-top: 0.6em;
+      align-self: stretch;
+      box-sizing: border-box;
+    }
+
+    .slide-caption p {
+      margin: 0;
+      font-size: 0.45em;
+      line-height: 1.35;
+      color: #333;
+    }
+
+    .slide-caption p + p {
+      margin-top: 0.35em;
+    }
+  </style>
+<script src="mathjax-config.js"></script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <section>
+        <div class="slide-frame">
+          <img src="MilesTheory/001.png" />
+          <div class="slide-caption">
+            <p>The general theory for the generation of waves by wind is due to Miles (1957). 
+              We consider a two-dimensional domain with air above water, and a sheared background velocity profile $U(z)$.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <img src="MilesTheory/002.png" />
+          <div class="slide-caption">
+            <p>We consider what happens when there is an initial sinusoidal perturbation to the flat sea state.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <img src="MilesTheory/003.png" />
+          <div class="slide-caption"></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <img src="MilesTheory/004.png" />
+          <div class="slide-caption">
+            <p>Assume normal mode solutions.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <img src="MilesTheory/005.png" />
+          <div class="slide-caption">
+            <p>Obtain the Rayleigh equation for the amplitude.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <img src="MilesTheory/006.png" />
+          <div class="slide-caption">
+            <p>There is a singularity at the critical level, $z_c: U(z_c)=c$.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <img src="MilesTheory/008.png" />
+          <div class="slide-caption">
+            <p>To avoid an unphysical singularity, let the phase speed $c$ have small imaginary part.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <img src="MilesTheory/009.png" />
+          <div class="slide-caption"></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <img src="MilesTheory/010.png" />
+          <div class="slide-caption">
+            <p>$c_i$ gives the growth rate of the initial perturbation (i.e., of waves).</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <a href="index.html">⬅ Back to Homepage</a>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      width: 1200,
+      height: 800,
+      hash: true,
+      transition: 'fade',
+      backgroundTransition: 'fade'
+    });
+  </script>
+</body>
+</html>

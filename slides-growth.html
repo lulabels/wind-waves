@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modified Growth Rates</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="mathjax-config.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" defer></script>
+</head>
+<body>
+  <main class="container growth-page justified-page">
+    <header class="page-header">
+      <a href="index.html" class="back-link">← Back to main page</a>
+      <h1>Modified Growth Rates</h1>
+    </header>
+
+    <!-- Master equation -->
+    <section class="ep-section">
+          The modified growth rates shown below are computed via
+        </p>
+        <div class="equation-block">
+          \[
+          \omega(k;\epsilon)
+            = k\Big(
+                \epsilon_\rho\,\mathrm{Im}\,c^{(0)}_1(k)
+                \;+\;
+                \epsilon^2\,\mathrm{Im}\,c^{(2)}(k)
+              \Big),
+          \]
+        </div>
+        <p>
+          where the first term is the classical Miles growth rate ($\epsilon_{\rho} \text{Im } c_1^{(0)}$ comes from another asymptotic expansion, to approximate $\text{Im }c^{(0)}$) and the second term is
+          the leading-order modification dependent on the wave-induced mean flow \(U^{(2)}(b)\) (the dispersion relation ends up being linear in $c^{(2)}$; no approximation is needed here).
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 1: no surface tension -->
+    <section class="ep-section">
+      <div class="ep-card">
+        <h2>1. Growth rates without surface tension</h2>
+
+        <div class="growth-grid">
+          <!-- Left: figure + caption -->
+          <div class="growth-figure">
+            <figure class="graphical-abstract">
+              <img src="img/growth-rates.png"
+                   alt="Modified growth rate as a function of wavenumber for several wave slopes and background shears, without surface tension." />
+              <figcaption>
+                <strong>Figure 1.</strong>
+                Modified growth rate \(k c_i\) vs wavenumber \(k\) for four wave slopes
+                \(\epsilon\) and three far–field wind speeds \(U_\infty^{(0)}\), with
+                no surface tension. The solid curves ($\epsilon=0$) show the Miles growth rate, while the other curves include the \(\epsilon^2\) correction.
+                <br><br>
+                <strong>Parameters:</strong>
+                Double-exponential wind profile with \(U_s^{(0)} = 0\);
+                \(U_\infty^{(0)} = 5.0,\,8.0,\,10.0~\mathrm{m\,s^{-1}}\);
+                \(\rho_{\text{air}} = 1.25~\mathrm{kg\,m^{-3}}\),
+                \(\rho_w = 1025~\mathrm{kg\,m^{-3}}\);
+                air-layer depth \(h_{\text{air}} = 1~\mathrm{m}\),
+                water depth \(h_w = 0.54~\mathrm{cm}\);
+                wave slopes \(\epsilon = 0,\,0.1,\,0.2,\,0.3\).
+              </figcaption>
+            </figure>
+          </div>
+
+          <!-- Right: interpretation -->
+          <div class="growth-text">
+            <ul>
+              <li>
+                The \(\epsilon = 0\) curves show the Lagrangian formulation reproduces the classical growth rate at leading order.</strong>
+              </li>
+              <li>
+                As \(\epsilon\) increases, the \(\epsilon^2\,\mathrm{Im}\,c^{(2)}(k)\) term
+                systematically reduces the growth, especially at high wavenumbers.</strong>
+              </li>
+              <li>
+                Larger \(U_\infty^{(0)}\) corresponds to enhanced background shear, and when it and the wave
+                slope are sufficiently large, there is also significant suppression at intermediate wavenumbers.
+              </li>
+              <li>
+                This is on a log scale; the growth reduction is quite substantial, up to nearly a 40% decrease in integrated growth. 
+              </li>
+            </ul>
+
+            <div class="key-message">
+              The modified growth rate, once computed for realistic double exponential background wind (and ocean) velocity profiles, shows significant suppression of wave growth with increasing wave slope.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: with surface tension -->
+    <section class="ep-section">
+      <div class="ep-card">
+        <h2>2. Growth rates with surface tension</h2>
+
+        <div class="growth-grid">
+          <!-- Left: figure + caption -->
+          <div class="growth-figure">
+            <figure class="graphical-abstract">
+              <img src="img/growth-rates-surface-tension.png"
+                   alt="Modified growth rate as a function of wavenumber including surface tension, for several wave slopes." />
+              <figcaption>
+                <strong>Figure 2.</strong>
+                Modified growth rate \(k c_i\) vs. wavenumber with (black) and
+                without (grey) surface tension. All curves use
+                \(U_\infty^{(0)} = 10.0~\mathrm{m\,s^{-1}}\).
+                <br><br>
+                <strong>Parameters:</strong>
+                Same wind and density parameters as panel&nbsp;1;
+                far–field wind \(U_\infty^{(0)} = 10.0~\mathrm{m\,s^{-1}}\);
+                surface tension \(\gamma = 7.2 \times 10^{-5}~\mathrm{m^3\,s^{-2}}\) (or $\gamma=0$);
+                wave slopes \(\epsilon = 0,\,0.1,\,0.2,\,0.3\).
+                </figcaption>
+            </figure>
+          </div>
+
+          <!-- Right: interpretation -->
+          <div class="growth-text">
+            <ul>
+              <li>
+                The same growth suppression appears even when surface tension is included; it is not a competing or oveerriding effect
+              </li>
+              <li>
+                While intermediate wavenumbers affected by the modified growth rate have the same growth whether surface tension is included or not, the highest wavenumbers are significantly impacted by capillary effects, and the impact also increases with wave slope.</strong>
+              </li>
+    
+              </li>

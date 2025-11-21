@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Math (EP) · Lagrangian Miles Analysis</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="mathjax-config.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" defer></script>
+</head>
+<body>
+  <main class="container math-ep">
+
+    <header class="page-header">
+      <a href="index.html" class="back-link">← Back to main page</a>
+      <h1>The Math (EP)</h1>
+      <p class="page-subtitle">
+        The extended play version of the math required to complete the nonlinear stability analysis in the Lagrangian frame and get the modified growth rate.
+      </p>
+    </header>
+
+    <div class="ep-slides">
+          <!-- EP-0: Roadmap -->
+      <section class="ep-section">
+        <div class="ep-card">
+          <h2>Overview </h2>
+          <p>
+            We need to go through third order in the wave slope \(\epsilon\) to get the modified growth rate.
+          </p>
+
+          <div class="order-grid">
+            <!-- O(eps) column -->
+            <div class="order-col">
+              <h3>\(O(\epsilon)\)</h3>
+              <p class="order-subtitle">Linear problem (Miles)</p>
+
+              <div class="order-step">
+                <p>Derive the Rayleigh equation in Lagrangian coordinates for \(\varphi(b)\).</p>
+              </div>
+              <div class="order-arrow">↓</div>
+
+              <div class="order-step">
+                <p>Use linear boundary conditions to get a dispersion relation.</p>
+              </div>
+              <div class="order-arrow">↓</div>
+
+              <div class="order-step">
+                <p>Recover \(c^{(0)}(k)\) and Miles-(esque) growth rate \(\omega^{(0)}(k)\).</p>
+              </div>
+            </div>
+
+            <!-- O(eps^2) column -->
+            <div class="order-col">
+              <h3>\(O(\epsilon^2)\)</h3>
+              <p class="order-subtitle">Insufficient to get growth rate modification</p>
+
+              <div class="order-step">
+                <p>Apply mass and vorticity conservation at second order.</p>
+              </div>
+              <div class="order-arrow">↓</div>
+
+              <div class="order-step">
+                <p>\(c^{(1)}(k)=0\)</p>
+              </div>
+              <div class="order-arrow">&</div>
+
+              <div class="order-step">
+                <p>Identify the wave-induced mean flow \(U^{(2)}(b)\).</p>
+              </div>
+            </div>
+
+            <!-- O(eps^3) column -->
+            <div class="order-col">
+              <h3>\(O(\epsilon^3)\)</h3>
+              <p class="order-subtitle">Get growth rate modification in response to \(U^{(2)}(b)\)</p>
+
+              <div class="order-step">
+                <p>Include \(U^{(2)}\) in third-order boundary conditions at \(b=0\).</p>
+              </div>
+              <div class="order-arrow">↓</div>
+
+              <div class="order-step">
+                <p>Obtain a third-order dispersion relation for \(c^{(2)}(k)\).</p>
+              </div>
+              <div class="order-arrow">↓</div>
+
+              <div class="order-step">
+                <p>Get an \(\epsilon^2\) correction to Miles’ growth rate via \(\mathrm{Im}\,c^{(2)}(k)\).</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    <!-- EP-1: Eulerian vs Lagrangian -->
+    <section class="ep-section">
+      <h2>1. The Eulerian frame vs. the Lagrangian frame</h2>
+      <div class="ep-card two-col">
+        <div class="ep-col">
+          <h3>Eulerian view</h3>
+          <p>
+            As usual, we express the horizontal velocity \(u(x,z,t)\), the vertical velocity \(w(x,z,t)\), and the pressure
+            \(p(x,z,t)\) at fixed spatial points. We can write the Euler equations,
+          </p>
+          <div class="equation-block">
+            \[
+            \rho\left(\partial_t u + u\,u_x + w\,u_z\right) + p_x = 0,
+            \]
+            \[
+            \rho\left(\partial_t w + u\,w_x + w\,w_z\right) + p_z + \rho g = 0,
+            \]
+          </div>
+          <p>
+            Incompressibility is written as
+          </p>
+          <div class="equation-block">
+            \[
+            u_x + w_z = 0.
+            \]
+          </div>
+          <p>
+            The free surface is a <em>moving</em> interface \(z = \eta(x,t)\), and the critical layer
+            is defined at the height $z_c$ where \(U(z_c) = c\) (since \(c\) really has small imaginary part, this is really \(U(z_c) = c_r\)).
+          </p>
+        </div>
+        <div class="ep-col">
+          <h3>Lagrangian view</h3>
+          <p>
+            We instead let the spatial locations be the dependent variables, where particle labels
+            \((a,b)\) are the independent variables (along with time). We choose the particle labels to be based on the initial position of the particles. We can define a mapping from \((a,b) \mapsto (x,z)\) via 
+          </p>
+          <div class="equation-block">
+            \[
+            \mathcal{J} = x_a z_b - x_b z_a.
+            \]
+          </div>
+          <p>
+            The Euler equations can then be written as
+          </p>
+          <div class="equation-block">
+            \[
+            \mathcal{J}\,\ddot x + \frac{1}{\rho}\left(p_a z_b - p_b z_a\right) = 0,
+            \]
+            \[
+            \mathcal{J}\,\ddot z + \frac{1}{\rho}\left(p_b x_a - p_a x_b + \mathcal{J} g\right) = 0,
+            \]
+          </div>
+          <p>
+            and incompressibility as \(\dot{\mathcal{J}}=0\).
+            In these coordinates, the free surface is simply \(b = 0\).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EP-2: Monochromatic wave + ordered expansion -->
+    <section class="ep-section">
+      <h2>2. Asymptotic expansions</h2>
+      <div class="ep-card">
+        <p>
+          We consider a permanent, progressive, monochromatic, spatially periodic 2D wave of
+          wavenumber \(k\) and phase speed \(c\). First, we write the coordinates $x$ and $z$ in terms of unordered expansions:
+        </p>
+        <div class="equation-block">
+          \[
+          x(a,b,t)
+            = a + U(b)\,t + \sum_{n\ge1} x_n(b)\,\sin(\theta_n),
+          \]
+          \[
+          z(a,b,t)
+            = b + z_0(b) + \sum_{n\ge1} z_n(b)\,\cos(\theta_n),
+          \]
+          \[
+          \theta_n = n k\,[a - (c - U(b))t].
+          \]
+        </div>
+        <p>
+          After defining a small parameter \(\epsilon\), the wave slope, we can convert these to ordered expansions via
+        </p>
+        <div class="equation-block">
+          \[
+          x = x^{(0)} + \epsilon\,x^{(1)} + \epsilon^2 x^{(2)} + \epsilon^3 x^{(3)} + \dots,
+          \]
+          \[
+          z = z^{(0)} + \epsilon\,z^{(1)} + \epsilon^2 z^{(2)} + \epsilon^3 z^{(3)} + \dots,
+          \]
+          \[
+          p = p^{(0)} + \epsilon\,p^{(1)} + \epsilon^2 p^{(2)} + \epsilon^3 p^{(3)} + \dots
+          \]
+        </div>
+        <p>
+          The background/mean velocity (this is $\overline{u}_L$) and phase speed are also expanded in powers of \(\epsilon\):
+        </p>
+        <div class="equation-block">
+          \[
+          U(b) = U^{(0)}(b) + \epsilon^2 U^{(2)}(b) + \dots,
+          \qquad
+          c = c^{(0)} + \epsilon\,c^{(1)} + \epsilon^2 c^{(2)} + \dots.
+          \]
+        </div>
+        <p>
+          The term \(U^{(2)}(b)\) corresponds to a wave-induced mean flow, and we will see that
+          while \(c^{(2)}(k)\) gives the first correction to the phase speed (and growth rate).
+        </p>
+      </div>
+    </section>
+
+    <!-- EP-3: Change of variables + Rayleigh equation -->
+    <section class="ep-section">
+      <h2>3. Rayleigh equation in Lagrangian coordinates</h2>
+      <div class="ep-card">
+        <p>
+          At first order in \(\epsilon\), we use the interesting change of variables (due to Bennett, <em> Lagrangian Fluid Dynamics</em>)
+        </p>
+        <div class="equation-block">
+          \[
+          x^{(1)}(a,b,t)
+            = A(a + U^{(0)}(b)t,\,b,\,t),
+          \quad
+          A(a,b,t) = \xi(b)\,\sin\big(k(a - c^{(0)} t)\big),
+          \]
+          \[
+          z^{(1)}(a,b,t)
+            = B(a + U^{(0)}(b)t,\,b,\,t),
+          \quad
+          B(a,b,t) =
+            \frac{\varphi(b)}{k\big(c^{(0)} - U^{(0)}(b)\big)}
+            \cos\big(k(a - c^{(0)} t)\big).
+          \]
+        </div>
+        <p>
+          Substituting these into the <em>linearized</em> Lagrangian momentum
+          equations and mass conservation yields the Rayleigh equation in the label
+          coordinate \(b\):
+        </p>
+        <div class="equation-block">
+          \[
+          \varphi_{bb}
+            - \left(
+                k^2
+                - \frac{U^{(0)}_{bb}}{c^{(0)} - U^{(0)}}
+              \right)\varphi = 0.
+          \]
+        </div>
+        <p>
+          This equation not only motivates the definition of the critical level, but will be used to get from the dispersion relation to the analytical solution for the growth rate.
+          Notice there is a singularity when $c^{(0)} = U^{(0)}$. To avoid this, we assume $c^{(0)}$ has a small imaginary part, $c^{(0)} = c^{(0)}_r + i c^{(0)}_i$ with $|c^{(0)}_i| \ll 1$.
+        </p>
+      </div>
+    </section>
+
+    <!-- EP-4: Dispersion relation -> growth rate -->
+    <section class="ep-section">
+      <h2>4. Dispersion relation and Miles-type growth rate</h2>
+      <div class="ep-card">
+        <p>
+          We will use a dispersion relation to solve for $c^{(0)}$ (both the imaginary part, 
+          $c^{(0)}_i$, which will give the growth rate, and the real part, $c^{(0)}_r$). Using the linearized dynamic boundary condition at \(b = 0\),
+          we obtain a dispersion relation. To actually solve for $c^{(0)}$, we must make a second asymptotic expansion
+          in the density ratio. We then obtain a dispersion relation of the form
+        </p>
+        <div class="equation-block">
+          \[
+          D(c^{(0)},k;\,\epsilon_\rho)
+            = D_0(c^{(0)},k) + \epsilon_\rho\,D_1(c^{(0)},k) = 0,
+          \]
+        </div>
+        <p>
+          where \(\epsilon_\rho = \rho_{\text{air}}/(\rho_{\text{air}}+\rho_{\text{water}})\),
+          and \(D_0, D_1\) are known functions of the background profile \(U^{(0)}(b)\)
+          and the amplitude \(\varphi(b)\).
+        </p>
+        <p>
+          To solve, we also expand the phase speed \(c^{(0)}\) in $\epsilon_\rho$:
+        </p>
+        <div class="equation-block">
+          \[
+          c^{(0)}(k,\epsilon_\rho)
+            = c^{(0)}_0(k) + \epsilon_\rho\,c^{(0)}_1(k) + O(\epsilon_\rho^2).
+          \]
+        </div>
+        <p>
+          Then \(c^{(0)}_0(k)\) satisfies \(D_0(c^{(0)}_0,k) = 0\) and
+        </p>
+        <div class="equation-block">
+          \[
+          c^{(0)}_1(k)
+            = -\,\frac{D_1(c^{(0)}_0,k)}{\partial_{c^{(0)}} D_0(c^{(0)}_0,k)}.
+          \]
+        </div>
+        <p>
+          One can then use the Rayleigh equation and integration by parts to obtain
+        </p>
+        <div class="equation-block">
+          \[
+          \mathrm{Im}\,c^{(0)}_1(k)
+            \propto (c_0^{(0)} - U^{(0)}_s)^2\pi
+              \frac{\frac{d^2}{db^2}U^{(0)}_c}{\left|\frac{d}{db}U^{(0)}_c\right|}
+              \,\frac{|\varphi_c|^2}{|\varphi_s|^2},
+           
+          \]
+        </div>
+        <p>
+          where \(\varphi_c = \varphi(b_c)\) and \(\varphi_s = \varphi(0)\).
+          
+        </p>
+        
+        <p>
+          Up to this point we have rederived the classical Miles growth rate, but entirely
+          in Lagrangian coordinates. This does explicitly and concisely show why the critical level is wavy though, 
+          and other interesting differences can be seen even at this order upon transforming the Lagrangian coordinates
+          back into the Eulerian frame.
+        </p>
+      </div>
+    </section>
+
+    <!-- EP-5: Why higher order (c^(1) = 0) -->
+    <section class="ep-section">
+      <h2>5. Why we need higher order: \(c^{(1)} = 0\)</h2>
+      <div class="ep-card">
+        <p>
+          Recall we expanded the phase speed in terms of the wave slope $\epsilon$,
+        </p>
+        <div class="equation-block">
+          \[
+          c(k,\epsilon)
+            = c^{(0)}(k) + \epsilon\,c^{(1)}(k) + \epsilon^2 c^{(2)}(k) + \dots.
+          \]
+        </div>
+        <p>
+          At second-order, imposing vorticity conservation yields that
+        </p>
+        <div class="equation-block">
+          \[
+          c^{(1)}(k) = 0.
+          \]
+        </div>
+        <p>
+          Consequently, the first modification to the growth rate appears
+          at \(O(\epsilon^2)\), through the term \(c^{(2)}(k)\), and we must carry
+          the analysis through third order in \(\epsilon\).
+        </p>
+      </div>
+    </section>
+
+    <!-- EP-6: Structure of third-order calculation -->
+    <section class="ep-section">
+      <h2>6. Structure of the third-order calculation</h2>
+      <div class="ep-card">
+        <p>
+          At third order, we
+        </p>
+        <ul>
+          <li>
+            Analyze the dynamic boundary condition</strong>, which involves the contributions of \(U^{(2)}\)
+            and higher harmonics.
+          </li>
+          <li>
+            Use <strong>conservation laws</strong> (and a lot of algebra) to simplify into a solvable form for $c^{(2)}$.
+          </li>
+        </ul>
+        <p>
+          The outcome is a third-order dispersion relation of the schematic form
+        </p>
+        <div class="equation-block">
+          \[
+          F(0^+) + c^{(2)}\,G(0^+)
+            = F(0^-) + c^{(2)}\,G(0^-),
+          \]
+        </div>
+        <p>
+          where \(F\) and \(G\) are explicit functionals of the background profile
+          \(U^{(0)}(b)\), the first-order amplitude \(\varphi(b)\), and their
+          derivatives. Note that it is a <strong>linear equation in $c^{(2)}$ </strong>, 
+          so unlike the leading-order case, no asymptotic expansion in the density ratio is needed here.
+        </p>
+      </div>
+    </section>
+
+    <!-- EP-7: Final boxed expressions -->
+    <section class="ep-section">
+      <h2>7. The wave-induced mean flow in the modified growth rate</h2>
+      <div class="ep-card">
+        <h3>Wave-induced mean flow (Lagrangian drift)</h3>
+        <p>
+          The wave-induced mean flow, \(U^{(2)}(b)\), can be written in terms of the
+          background profile \(U^{(0)}\) and the first-order amplitude \(\varphi(b)\):
+        </p>
+        <div class="equation-block">
+          \[
+          U^{(2)}(b)
+            = \frac{1}{4}\,\big(c^{(0)} - U^{(0)}(b)\big)\,
+              \frac{d^2}{db^2}
+              \left[
+                \frac{\varphi(b)^2}{
+                  k^2 \big(c^{(0)} - U^{(0)}(b)\big)^2
+                }
+              \right].
+          \]
+        </div>
+        <p>
+          This is a Lagrangian Stokes-drift-like current.
+        </p>
+
+        <h3>Modified growth rate</h3>
+        <p>
+          The corrected growth rate can be written as
+        </p>
+        <div class="equation-block">
+          \[
+          \omega(k;\epsilon)
+            = k\Big[
+                \epsilon_\rho\,\mathrm{Im}\,c^{(0)}_1(k)
+                + \epsilon^2\,\mathrm{Im}\,c^{(2)}(k)
+              \Big].
+          \]
+        </div>
+        <p>
+          The first term is the classical Miles growth rate.
+          The second term is the leading-order modification, which we have analytically shown depends on the wave-induced
+          mean flow \(U^{(2)}\). It scales like \(\epsilon^2\), and calculating it for realistic background profiles shows that its sign is opposite to the first term, 
+          so it suppresses growth as steepness increases.
+        </p>
+      </div>
+    </section>
+    </div>
+
+    <div class="ep-nav">
+      <button id="prevSlide" type="button">← Previous</button>
+      <span class="ep-step-indicator">
+        Slide <span id="slideNumber">1</span> / <span id="slideTotal">7</span>
+      </span>
+      <button id="nextSlide" type="button">Next →</button>
+    </div>
+
+    <footer class="page-footer">
+      <a href="index.html" class="back-link">← Back to main page</a>
+    </footer>
+
+  </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = Array.from(document.querySelectorAll('.ep-section'));
+      const total = sections.length;
+      const prevBtn = document.getElementById('prevSlide');
+      const nextBtn = document.getElementById('nextSlide');
+      const slideNumberEl = document.getElementById('slideNumber');
+      const slideTotalEl = document.getElementById('slideTotal');
+
+      let current = 0;
+
+      slideTotalEl.textContent = total;
+
+      function showSlide(index) {
+        sections.forEach((sec, i) => {
+          sec.style.display = (i === index) ? 'block' : 'none';
+        });
+        slideNumberEl.textContent = index + 1;
+        prevBtn.disabled = (index === 0);
+        nextBtn.disabled = (index === total - 1);
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+
+      prevBtn.addEventListener('click', () => {
+        if (current > 0) {
+          current -= 1;
+          showSlide(current);
+        }
+      });
+
+      nextBtn.addEventListener('click', () => {
+        if (current < total - 1) {
+          current += 1;
+          showSlide(current);
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+          nextBtn.click();
+        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+          prevBtn.click();
+        }
+      });
+
+      showSlide(current);
+    });
+  </script>
+</body>
+</html>
